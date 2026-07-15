@@ -1,11 +1,163 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const articulos = [
+  {
+    slug: 'sistema-alimentario',
+    titulo: '¿El sistema alimentario está diseñado para encarecer la comida saludable?',
+    categoria: 'Economía',
+    fecha: '2024',
+    descripcion: 'Un análisis de las estructuras económicas que determinan el precio de los alimentos y su impacto en el acceso a una dieta saludable.',
+  },
+  {
+    slug: 'ia-y-cultivos',
+    titulo: 'La IA ya decide qué cultivos sobreviven una sequía. Ahora quiere decidir qué comes tú.',
+    categoria: 'Tecnología',
+    fecha: '2024',
+    descripcion: 'Cómo la inteligencia artificial está transformando la agricultura y comenzando a influir en nuestras decisiones alimentarias.',
+  },
+  {
+    slug: 'cultura-y-comida',
+    titulo: 'Lo que comes dice más de tu cultura que tu idioma.',
+    categoria: 'Cultura',
+    fecha: '2024',
+    descripcion: 'La alimentación como espejo de identidad cultural: por qué lo que está en tu plato revela más sobre tus raíces que las palabras que usas.',
+  },
+];
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout title="Inicio">
+
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-tag">Ciencia · Economía · Cultura</p>
+      <h1 class="hero-title">El conocimiento<br/>que hay detrás<br/>de lo que comes</h1>
+      <p class="hero-desc">NexoraFood analiza el sistema alimentario desde la ciencia, la economía y la cultura. Sin simplificaciones.</p>
+      <a href="/articulos" class="hero-btn">Leer artículos</a>
+    </div>
+  </section>
+
+  <section class="articulos-section">
+    <div class="section-inner">
+      <h2 class="section-title">Artículos recientes</h2>
+      <div class="articulos-grid">
+        {articulos.map((art) => (
+          <a href={`/articulos/${art.slug}`} class="card">
+            <span class="card-categoria">{art.categoria}</span>
+            <h3 class="card-titulo">{art.titulo}</h3>
+            <p class="card-desc">{art.descripcion}</p>
+            <span class="card-leer">Leer artículo →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .hero {
+    background-color: var(--color-header);
+    padding: var(--space-24) var(--space-8);
+  }
+  .hero-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+  .hero-tag {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-4);
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: var(--text-5xl);
+    color: var(--color-white);
+    line-height: 1.1;
+    margin-bottom: var(--space-6);
+  }
+  .hero-desc {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+    color: var(--color-white);
+    opacity: 0.8;
+    max-width: 540px;
+    margin-bottom: var(--space-8);
+  }
+  .hero-btn {
+    display: inline-block;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    padding: var(--space-3) var(--space-8);
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    border-radius: 2px;
+    transition: opacity 0.2s;
+  }
+  .hero-btn:hover { opacity: 0.85; }
+
+  .articulos-section {
+    padding: var(--space-16) var(--space-8);
+  }
+  .section-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    color: var(--color-text);
+    margin-bottom: var(--space-8);
+  }
+  .articulos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-6);
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-8);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+  .card-categoria {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .card-titulo {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    color: var(--color-text);
+    line-height: 1.3;
+  }
+  .card-desc {
+    font-family: var(--font-serif);
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
+    line-height: 1.6;
+    flex: 1;
+  }
+  .card-leer {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-top: var(--space-2);
+  }
+</style>
