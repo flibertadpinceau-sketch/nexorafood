@@ -1,0 +1,242 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="AI Already Decides Which Crops Survive a Drought" description="How artificial intelligence is transforming agriculture and starting to influence our food choices." lang="en" path="/articulos/ia-y-cultivos">
+
+  <article>
+
+    <header class="article-header">
+      <div class="header-inner">
+        <span class="categoria">AI Applied to Food Systems</span>
+        <h1>AI Already Decides Which Crops Survive a Drought. Now It Wants to Decide What You Eat.</h1>
+        <p class="subtitulo">Artificial intelligence has spent years working quietly inside the global food system. But now it's reaching somewhere far more intimate: the decision of what you put on your plate.</p>
+        <div class="meta">
+          <span class="autor-badge">NF</span>
+          <div class="meta-text">
+            <strong>NexoraFood</strong> · June 18, 2026 · 5 min read
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="article-body">
+      <div class="content">
+
+        <p class="lead">There's an algorithm on Walmart's servers that reviews photographs of tomatoes. It evaluates their color, their texture, the firmness the image projects. It decides within seconds whether that shipment reaches the shelves or gets diverted. The algorithm is called Eden, and in its first six months it saved Walmart 86 million dollars in waste.</p>
+
+        <p>That was just the beginning.</p>
+
+        <p>Artificial intelligence has spent years working quietly inside the global food system: in the fields, in the warehouses, in distribution centers, on delivery platforms. But now it's reaching somewhere far more intimate: the decision of what you put on your plate.</p>
+
+        <div class="h2-wrap"><h2>It's helping cut 1.3 billion tons of waste</h2></div>
+
+        <p>Every year, roughly a third of all the food produced in the world is lost or wasted. That's 1.3 billion tons. If that figure were a country, it would be the planet's third-largest emitter of greenhouse gases.</p>
+
+        <p>In the United States alone, 38% of food — around 89 million tons — ends up unsold or uneaten. The equivalent of 145 billion meals.</p>
+
+        <div class="pull-quote">
+          <p>"Afresh managed to cut waste by as much as 25% in the stores where it's deployed. A study documented in scientific literature showed an average reduction of 14.8% per store."</p>
+        </div>
+
+        <p>AI is attacking this problem from several angles. Afresh, a startup founded by Stanford graduates, built tools that help store managers order more precise quantities of fresh produce, consistently reducing waste.</p>
+
+        <div class="h2-wrap"><h2>The algorithm that recommends your next meal</h2></div>
+
+        <p>Instacart processes 1.2 billion items a year through its recommendation engine. Its AI considers not just your purchase history, but also your shopping speed and your substitution preferences. The approval rate for those automatic substitutions is 95%.</p>
+
+        <p>Walmart's app uses natural language processing to learn each household's specific terminology: if your family says "the usual one" to refer to a particular brand of milk, the system learns that. It predicts when you're about to run out of essentials before you notice.</p>
+
+        <div class="highlight-box">
+          <p>McDonald's, Domino's, Starbucks and Yum Brands — the parent company of <strong>KFC, Pizza Hut and Taco Bell</strong> — adopted AI platforms in partnership with Google Cloud, Microsoft and Nvidia. Yum Brands reported in 2024 a <strong>15% increase in digital sales</strong> at stores where it rolled out these tools.</p>
+        </div>
+
+        <div class="h2-wrap"><h2>What's coming</h2></div>
+
+        <p>AI isn't going to replace farming. It isn't going to replace cooking, or food culture, or the everyday decisions of millions of people, either. But it is going to be increasingly present at every point along that chain.</p>
+
+        <div class="divider"></div>
+
+        <div class="closing-box">
+          <p>From the sensor in the soil that detects water stress in a rice crop to the algorithm that, when you open your grocery app tonight, already knows — with considerable precision — what you're going to put in your cart.</p>
+          <p><strong>"The question is no longer whether AI will influence what you eat. The question is how much control you want over that decision."</strong></p>
+        </div>
+
+        <div class="fuentes">
+          <div class="fuentes-label">Sources</div>
+          <p>Walmart/Eden case study, Harvard Business Digital Initiative · ReFED, "Three Ways AI Is Driving Reductions in Food Loss and Waste", 2024 · ScienceDirect, "Artificial intelligence in food system", 2025 · Frontiers in Nutrition, "Artificial intelligence in personalized nutrition", July 2025 · Research and Markets, "AI in Food Retail and E-commerce", 2025</p>
+          <p class="disclaimer">This article is informational and journalistic in nature. The data cited corresponds to publicly available scientific studies and market reports.</p>
+        </div>
+
+      </div>
+    </div>
+
+  </article>
+
+</BaseLayout>
+
+<style>
+  .article-header {
+    background-color: var(--color-header);
+    padding: var(--space-16) var(--space-8);
+  }
+  .header-inner {
+    max-width: var(--max-width-article);
+    margin: 0 auto;
+  }
+  .categoria {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    display: block;
+    margin-bottom: var(--space-4);
+  }
+  .article-header h1 {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    color: var(--color-white);
+    line-height: 1.1;
+    margin-bottom: var(--space-6);
+  }
+  .subtitulo {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+    color: rgba(255,255,255,0.68);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.65;
+    margin-bottom: var(--space-8);
+    max-width: 560px;
+  }
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: var(--space-6);
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    color: rgba(255,255,255,0.45);
+  }
+  .meta strong { color: rgba(255,255,255,0.8); font-weight: 500; }
+  .autor-badge {
+    width: 34px;
+    height: 34px;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--color-header);
+    flex-shrink: 0;
+  }
+  .article-body { padding: var(--space-12) var(--space-8); }
+  .content { max-width: var(--max-width-article); margin: 0 auto; }
+  .lead {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    line-height: 1.72;
+    color: var(--color-text);
+    margin-bottom: var(--space-6);
+    font-weight: 300;
+  }
+  .content p {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+    line-height: 1.85;
+    color: #2c2c2c;
+    margin-bottom: var(--space-6);
+    font-weight: 300;
+  }
+  .h2-wrap { margin: var(--space-12) 0 var(--space-4); }
+  .h2-wrap h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-header);
+    border-top: 2.5px solid var(--color-accent);
+    display: inline-block;
+    padding-top: var(--space-3);
+  }
+  .pull-quote {
+    border-left: 3px solid var(--color-accent);
+    padding: var(--space-4) var(--space-6);
+    margin: var(--space-8) 0;
+    background: #f2f7ec;
+  }
+  .pull-quote p {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    line-height: 1.5;
+    color: var(--color-header);
+    font-style: italic;
+    margin: 0 !important;
+  }
+  .highlight-box {
+    background: var(--color-header);
+    border-radius: 4px;
+    padding: var(--space-6) var(--space-8);
+    margin: var(--space-8) 0;
+  }
+  .highlight-box p {
+    font-family: var(--font-serif);
+    font-size: var(--text-base);
+    line-height: 1.75;
+    color: rgba(255,255,255,0.82);
+    font-weight: 300;
+    margin: 0 !important;
+  }
+  .highlight-box strong { color: var(--color-accent); font-weight: 500; }
+  .divider {
+    width: 40px;
+    height: 2px;
+    background: var(--color-accent);
+    margin: var(--space-8) 0;
+  }
+  .closing-box {
+    background: #f2f7ec;
+    border-radius: 4px;
+    padding: var(--space-8);
+    margin: var(--space-8) 0 0;
+  }
+  .closing-box p {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    color: var(--color-header);
+    font-weight: 300;
+    margin-bottom: var(--space-4) !important;
+  }
+  .closing-box p:last-child { margin-bottom: 0 !important; }
+  .closing-box strong {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--color-header);
+  }
+  .fuentes {
+    margin-top: var(--space-12);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-border);
+  }
+  .fuentes-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: var(--space-2);
+  }
+  .fuentes p {
+    font-size: var(--text-xs) !important;
+    color: #888 !important;
+    line-height: 1.7 !important;
+    margin-bottom: var(--space-2) !important;
+  }
+  .disclaimer { font-style: italic; color: #aaa !important; }
+</style>
