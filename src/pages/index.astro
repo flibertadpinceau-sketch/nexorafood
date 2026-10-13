@@ -137,55 +137,60 @@ const temas = [
             <input id="email-signup" name="email" type="email" required />
           </div>
         </div>
-        <div class="form-row">
-          <div class="form-field">
-            <label for="pais_origen">País de origen</label>
-            <input id="pais_origen" name="pais_origen" type="text" placeholder="Opcional" />
+        <details class="form-more">
+          <summary>Cuéntanos más sobre ti (opcional)</summary>
+          <div class="form-more-fields">
+            <div class="form-row">
+              <div class="form-field">
+                <label for="pais_origen">País de origen</label>
+                <input id="pais_origen" name="pais_origen" type="text" placeholder="Opcional" />
+              </div>
+              <div class="form-field">
+                <label for="pais_residencia">País de residencia</label>
+                <input id="pais_residencia" name="pais_residencia" type="text" placeholder="Opcional" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="rango_edad">Rango de edad</label>
+                <select id="rango_edad" name="rango_edad">
+                  <option value="">Prefiero no decir</option>
+                  <option value="18-24">18-24</option>
+                  <option value="25-34">25-34</option>
+                  <option value="35-44">35-44</option>
+                  <option value="45-54">45-54</option>
+                  <option value="55-64">55-64</option>
+                  <option value="65+">65+</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="tipo_alimentacion">Tipo de alimentación</label>
+                <select id="tipo_alimentacion" name="tipo_alimentacion">
+                  <option value="">Prefiero no decir</option>
+                  <option value="Omnívora">Omnívora</option>
+                  <option value="Vegetariana">Vegetariana</option>
+                  <option value="Vegana">Vegana</option>
+                  <option value="Pescetariana">Pescetariana</option>
+                  <option value="Otra">Otra</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field form-field-wide">
+                <label for="practica_religiosa">¿Sigues alguna práctica alimentaria por motivos religiosos o culturales? (opcional)</label>
+                <select id="practica_religiosa" name="practica_religiosa_cultural">
+                  <option value="">Prefiero no decir</option>
+                  <option value="Sí">Sí</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="comida_favorita">Tu comida favorita</label>
+                <input id="comida_favorita" name="comida_favorita" type="text" placeholder="Opcional" />
+              </div>
+            </div>
           </div>
-          <div class="form-field">
-            <label for="pais_residencia">País de residencia</label>
-            <input id="pais_residencia" name="pais_residencia" type="text" placeholder="Opcional" />
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-field">
-            <label for="rango_edad">Rango de edad</label>
-            <select id="rango_edad" name="rango_edad">
-              <option value="">Prefiero no decir</option>
-              <option value="18-24">18-24</option>
-              <option value="25-34">25-34</option>
-              <option value="35-44">35-44</option>
-              <option value="45-54">45-54</option>
-              <option value="55-64">55-64</option>
-              <option value="65+">65+</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label for="tipo_alimentacion">Tipo de alimentación</label>
-            <select id="tipo_alimentacion" name="tipo_alimentacion">
-              <option value="">Prefiero no decir</option>
-              <option value="Omnívora">Omnívora</option>
-              <option value="Vegetariana">Vegetariana</option>
-              <option value="Vegana">Vegana</option>
-              <option value="Pescetariana">Pescetariana</option>
-              <option value="Otra">Otra</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-field form-field-wide">
-            <label for="practica_religiosa">¿Sigues alguna práctica alimentaria por motivos religiosos o culturales? (opcional)</label>
-            <select id="practica_religiosa" name="practica_religiosa_cultural">
-              <option value="">Prefiero no decir</option>
-              <option value="Sí">Sí</option>
-              <option value="No">No</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label for="comida_favorita">Tu comida favorita</label>
-            <input id="comida_favorita" name="comida_favorita" type="text" placeholder="Opcional" />
-          </div>
-        </div>
+        </details>
         <label class="consent-label">
           <input type="checkbox" id="consent" required />
           Acepto que NexoraFood use estos datos para conocer mejor a su audiencia. No se comparten con terceros.
@@ -613,6 +618,33 @@ const temas = [
     border-radius: 2px;
     background-color: var(--color-white);
     color: var(--color-text);
+  }
+  .form-more {
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-3);
+  }
+  .form-more summary {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-accent);
+    cursor: pointer;
+    list-style: none;
+  }
+  .form-more summary::-webkit-details-marker {
+    display: none;
+  }
+  .form-more summary::before {
+    content: "+ ";
+  }
+  .form-more[open] summary::before {
+    content: "− ";
+  }
+  .form-more-fields {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-top: var(--space-4);
   }
   .consent-label {
     display: flex;
