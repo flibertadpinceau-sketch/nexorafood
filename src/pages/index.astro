@@ -124,15 +124,141 @@ const temas = [
     <div class="newsletter-inner">
       <div class="newsletter-text">
         <h3>Recibe nuestros análisis</h3>
-        <p>Un correo, sin spam, cuando publicamos algo que vale la pena leer.</p>
+        <p>Un correo, sin spam, cuando publicamos algo que vale la pena leer. Cuéntanos un poco de ti para ayudarnos a entender a nuestra audiencia — solo el nombre y el correo son obligatorios.</p>
       </div>
-      <form class="newsletter-form">
-        <label for="email-signup" class="sr-only">Correo electrónico</label>
-        <input id="email-signup" name="email" type="email" placeholder="tu@correo.com" required />
+      <form class="newsletter-form" id="newsletter-form">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="nombre">Nombre *</label>
+            <input id="nombre" name="nombre" type="text" required />
+          </div>
+          <div class="form-field">
+            <label for="email-signup">Correo electrónico *</label>
+            <input id="email-signup" name="email" type="email" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="pais_origen">País de origen</label>
+            <input id="pais_origen" name="pais_origen" type="text" placeholder="Opcional" />
+          </div>
+          <div class="form-field">
+            <label for="pais_residencia">País de residencia</label>
+            <input id="pais_residencia" name="pais_residencia" type="text" placeholder="Opcional" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="rango_edad">Rango de edad</label>
+            <select id="rango_edad" name="rango_edad">
+              <option value="">Prefiero no decir</option>
+              <option value="18-24">18-24</option>
+              <option value="25-34">25-34</option>
+              <option value="35-44">35-44</option>
+              <option value="45-54">45-54</option>
+              <option value="55-64">55-64</option>
+              <option value="65+">65+</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="tipo_alimentacion">Tipo de alimentación</label>
+            <select id="tipo_alimentacion" name="tipo_alimentacion">
+              <option value="">Prefiero no decir</option>
+              <option value="Omnívora">Omnívora</option>
+              <option value="Vegetariana">Vegetariana</option>
+              <option value="Vegana">Vegana</option>
+              <option value="Pescetariana">Pescetariana</option>
+              <option value="Otra">Otra</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field form-field-wide">
+            <label for="practica_religiosa">¿Sigues alguna práctica alimentaria por motivos religiosos o culturales? (opcional)</label>
+            <select id="practica_religiosa" name="practica_religiosa_cultural">
+              <option value="">Prefiero no decir</option>
+              <option value="Sí">Sí</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="comida_favorita">Tu comida favorita</label>
+            <input id="comida_favorita" name="comida_favorita" type="text" placeholder="Opcional" />
+          </div>
+        </div>
+        <label class="consent-label">
+          <input type="checkbox" id="consent" required />
+          Acepto que NexoraFood use estos datos para conocer mejor a su audiencia. No se comparten con terceros.
+        </label>
         <button type="submit">Suscribirme</button>
+        <p class="form-message" id="form-message" role="status"></p>
       </form>
     </div>
   </section>
+
+  <script>
+    const SUPABASE_URL = 'https://epcjjdxjsxoztyromaip.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_L-wr7TlNHcjtn83Q0mtHlw_ekq8DiKv';
+
+    const form = document.getElementById('newsletter-form');
+    const message = document.getElementById('form-message');
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const button = form.querySelector('button[type="submit"]');
+      const data = new FormData(form);
+      const payload = {
+        nombre: data.get('nombre'),
+        email: data.get('email'),
+        pais_origen: data.get('pais_origen') || null,
+        pais_residencia: data.get('pais_residencia') || null,
+        rango_edad: data.get('rango_edad') || null,
+        tipo_alimentacion: data.get('tipo_alimentacion') || null,
+        practica_religiosa_cultural: data.get('practica_religiosa_cultural') || null,
+        comida_favorita: data.get('comida_favorita') || null,
+      };
+
+      button.disabled = true;
+      message.textContent = '';
+      message.className = 'form-message';
+
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/suscriptores`, {
+          method: 'POST',
+          headers: {
+            apikey: SUPABASE_KEY,
+            Authorization: `Bearer ${SUPABASE_KEY}`,
+            'Content-Type': 'application/json',
+            Prefer: 'return=minimal',
+          },
+          body: JSON.stringify(payload),
+        });
+
+        if (res.ok) {
+          message.textContent = '¡Gracias por suscribirte!';
+          message.classList.add('success');
+          form.reset();
+        } else {
+          let code = null;
+          try {
+            const err = await res.json();
+            code = err?.code;
+          } catch (_) {}
+          if (res.status === 409 || code === '23505') {
+            message.textContent = 'Este correo ya está suscrito.';
+          } else {
+            message.textContent = 'Hubo un error. Intenta de nuevo en un momento.';
+          }
+          message.classList.add('error');
+        }
+      } catch (err) {
+        message.textContent = 'Hubo un error de conexión. Intenta de nuevo.';
+        message.classList.add('error');
+      } finally {
+        button.disabled = false;
+      }
+    });
+  </script>
 
   <section id="contacto" class="contacto-section">
     <p class="contacto-text">¿Tienes una historia, una colaboración o una pregunta?</p>
@@ -435,13 +561,14 @@ const temas = [
     padding: var(--space-12) var(--space-8);
   }
   .newsletter-inner {
-    max-width: 960px;
+    max-width: 680px;
     margin: 0 auto;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: var(--space-6);
-    align-items: center;
-    justify-content: space-between;
+  }
+  .newsletter-text {
+    text-align: center;
   }
   .newsletter-text h3 {
     font-family: var(--font-display);
@@ -456,23 +583,47 @@ const temas = [
   }
   .newsletter-form {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: var(--space-4);
   }
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
   }
-  .newsletter-form input {
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+  .form-field-wide {
+    grid-column: 1 / -1;
+  }
+  .form-field label {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    color: var(--color-text-light);
+  }
+  .form-field input,
+  .form-field select {
     font-family: var(--font-sans);
     font-size: var(--text-sm);
-    padding: var(--space-4) var(--space-6);
+    padding: var(--space-3) var(--space-4);
     border: 1px solid var(--color-border);
-    border-right: none;
-    border-radius: 2px 0 0 2px;
-    min-width: 220px;
+    border-radius: 2px;
+    background-color: var(--color-white);
+    color: var(--color-text);
+  }
+  .consent-label {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    color: var(--color-text-light);
+  }
+  .consent-label input {
+    margin-top: 3px;
   }
   .newsletter-form button {
     font-family: var(--font-sans);
@@ -482,12 +633,35 @@ const temas = [
     background-color: var(--color-accent);
     border: none;
     padding: var(--space-4) var(--space-6);
-    border-radius: 0 2px 2px 0;
+    border-radius: 2px;
     cursor: pointer;
     transition: opacity 0.2s;
   }
   .newsletter-form button:hover {
     opacity: 0.88;
+  }
+  .newsletter-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  .form-message {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    min-height: 1.2em;
+  }
+  .form-message.success {
+    color: var(--color-accent);
+  }
+  .form-message.error {
+    color: var(--color-amber);
+  }
+  @media (max-width: 640px) {
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+    .form-field-wide {
+      grid-column: auto;
+    }
   }
 
   /* Contacto */
