@@ -60,7 +60,14 @@ const langUrl = (l: 'es' | 'en' | 'fr') => `${prefixes[l]}${path}`;
 
     <header class="site-header">
       <div class="header-inner">
-        <a href={home} class="logo">NexoraFood</a>
+        <a href={home} class="logo">
+          <svg class="logo-icon" viewBox="0 0 128 128" aria-hidden="true" focusable="false">
+            <g><polygon points="41.00,54.08 35.25,64.04 23.75,64.04 18.00,54.08 23.75,44.12 35.25,44.12" fill="#a8311f" stroke="#f5f0e8" stroke-width="1.8" stroke-linejoin="round"/><polygon points="41.00,74.00 35.25,83.96 23.75,83.96 18.00,74.00 23.75,64.04 35.25,64.04" fill="#b33822" stroke="#f5f0e8" stroke-width="1.8" stroke-linejoin="round"/><polygon points="41.00,93.92 35.25,103.88 23.75,103.88 18.00,93.92 23.75,83.96 35.25,83.96" fill="#b33822" stroke="#f5f0e8" stroke-width="1.8" stroke-linejoin="round"/><polygon points="58.25,64.04 52.50,74.00 41.00,74.00 35.25,64.04 41.00,54.08 52.50,54.08" fill="#a8311f" stroke="#f5f0e8" stroke-width="1.8" stroke-linejoin="round"/><polygon points="58.25,83.96 52.50,93.92 41.00,93.92 35.25,83.96 41.00,74.00 52.50,74.00" fill="#c6472c" stroke="#f5f0e8" stroke-width="1.8" stroke-linejoin="round"/><polygon points="58.25,103.88 52.50,113.84 41.00,113.84 35.25,103.88 41.00,93.92 52.50,93.92" fill="#b33822" stroke="#f5f0e8" stroke-width="1.8" stroke-linejoin="round"/><polygon points="75.50,74.00 69.75,83.96 58.25,83.96 52.50,74.00 58.25,64.04 69.75,64.04" fill="#d2572f" stroke="#f5f0e8" stroke-width="1.8" stroke-linejoin="round"/><polygon points="75.50,93.92 69.75,103.88 58.25,103.88 52.50,93.92 58.25,83.96 69.75,83.96" fill="#b33822" stroke="#f5f0e8" stroke-width="1.8" stroke-linejoin="round"/><polygon points="92.75,64.04 87.00,74.00 75.50,74.00 69.75,64.04 75.50,54.08 87.00,54.08" fill="#8f2619" stroke="#f5f0e8" stroke-width="1.8" stroke-linejoin="round"/><polygon points="92.75,83.96 87.00,93.92 75.50,93.92 69.75,83.96 75.50,74.00 87.00,74.00" fill="#b33822" stroke="#f5f0e8" stroke-width="1.8" stroke-linejoin="round"/><polygon points="92.75,103.88 87.00,113.84 75.50,113.84 69.75,103.88 75.50,93.92 87.00,93.92" fill="#8f2619" stroke="#f5f0e8" stroke-width="1.8" stroke-linejoin="round"/><polygon points="110.00,54.08 104.25,64.04 92.75,64.04 87.00,54.08 92.75,44.12 104.25,44.12" fill="#d2572f" stroke="#f5f0e8" stroke-width="1.8" stroke-linejoin="round"/><polygon points="110.00,74.00 104.25,83.96 92.75,83.96 87.00,74.00 92.75,64.04 104.25,64.04" fill="#c6472c" stroke="#f5f0e8" stroke-width="1.8" stroke-linejoin="round"/><polygon points="110.00,93.92 104.25,103.88 92.75,103.88 87.00,93.92 92.75,83.96 104.25,83.96" fill="#b33822" stroke="#f5f0e8" stroke-width="1.8" stroke-linejoin="round"/></g>
+            <g><polygon points="58.25,44.12 52.50,54.08 41.00,54.08 35.25,44.12 41.00,34.16 52.50,34.16" fill="#6fa23f" stroke="#f5f0e8" stroke-width="1.8" stroke-linejoin="round"/><polygon points="92.75,44.12 87.00,54.08 75.50,54.08 69.75,44.12 75.50,34.16 87.00,34.16" fill="#5c8a35" stroke="#f5f0e8" stroke-width="1.8" stroke-linejoin="round"/><polygon points="75.50,54.08 69.75,64.04 58.25,64.04 52.50,54.08 58.25,44.12 69.75,44.12" fill="#86c24f" stroke="#f5f0e8" stroke-width="1.8" stroke-linejoin="round"/></g>
+            <path d="M 64 36 C 53 28, 49 14, 61 9 C 71 5, 82 9, 76 19" fill="none" stroke="#3f5d24" stroke-width="4.2" stroke-linecap="round"/>
+          </svg>
+          <span class="logo-text">NexoraFood</span>
+        </a>
         <nav class="main-nav">
           <a href={home}>{nav.inicio}</a>
           <a href={`${home}#articulos`}>{nav.articulos}</a>
@@ -138,6 +145,18 @@ const langUrl = (l: 'es' | 'en' | 'fr') => `${prefixes[l]}${path}`;
   }
 
   .logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .logo-icon {
+    width: 1.9rem;
+    height: 1.9rem;
+    flex-shrink: 0;
+  }
+
+  .logo-text {
     font-family: var(--font-display);
     font-size: var(--text-xl);
     font-weight: 700;
@@ -145,7 +164,7 @@ const langUrl = (l: 'es' | 'en' | 'fr') => `${prefixes[l]}${path}`;
     letter-spacing: -0.02em;
   }
 
-  .logo span {
+  .logo-text span {
     color: var(--color-accent);
   }
 
