@@ -24,3 +24,9 @@ pnpm-debug.log*
 .idea/
 .vercel
 github-recovery-codes.txt
+
+# originales sin optimizar de fotos (se quedan solo en tu Mac; las optimizadas viven en public/images/)
+tom-allport-eoRxpc7GDbM-unsplash.jpg
+bernd-dittrich-aS14a9_TEeg-unsplash.jpg
+ella-IpZHInMoYm4-unsplash.jpg
+jeslyn-xie--2w82GOysj8-unsplash.jpg

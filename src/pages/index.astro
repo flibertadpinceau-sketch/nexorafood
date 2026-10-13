@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const articulos = [
   {
     slug: 'sistema-alimentario',
+    imagen: '/images/articulo-sistema-alimentario.jpg',
     titulo: '¿El sistema alimentario está diseñado para encarecer la comida saludable?',
     categoria: 'Economía',
     fecha: '2024',
@@ -11,6 +12,7 @@ const articulos = [
   },
   {
     slug: 'ia-y-cultivos',
+    imagen: '/images/articulo-ia-cultivos.jpg',
     titulo: 'La IA ya decide qué cultivos sobreviven una sequía. Ahora quiere decidir qué comes tú.',
     categoria: 'Tecnología',
     fecha: '2024',
@@ -18,6 +20,7 @@ const articulos = [
   },
   {
     slug: 'cultura-y-comida',
+    imagen: '/images/articulo-cultura-comida.jpg',
     titulo: 'Lo que comes dice más de tu cultura que tu idioma.',
     categoria: 'Cultura',
     fecha: '2024',
@@ -54,7 +57,7 @@ const temas = [
       </div>
       <div class="hero-media">
         <div class="hero-photo">
-          <span>[ Fotografía documental ]</span>
+          <img src="/images/hero-documental.jpg" alt="Fotografía documental de un agricultor en un campo de cultivo al atardecer" />
         </div>
       </div>
     </div>
@@ -70,7 +73,7 @@ const temas = [
         <p class="eyebrow">Historia principal</p>
         <a href={`/articulos/${destacado.slug}`} class="featured-card">
           <div class="featured-media">
-            <span>[ Imagen del artículo ]</span>
+            <img src={destacado.imagen} alt="Vista aérea de un campo de cultivo en hileras" />
           </div>
           <div class="featured-content">
             <span class="card-categoria">{destacado.categoria}</span>
@@ -90,7 +93,7 @@ const temas = [
         {otros.map((art) => (
           <a href={`/articulos/${art.slug}`} class="card">
             <div class="card-media">
-              <span>[ Imagen ]</span>
+              <img src={art.imagen} alt={art.titulo} />
             </div>
             <div class="card-body">
               <span class="card-categoria">{art.categoria}</span>
@@ -717,5 +720,14 @@ const temas = [
   }
   .contacto-link:hover {
     opacity: 0.8;
+  }
+
+  .hero-photo img,
+  .featured-media img,
+  .card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 </style>
