@@ -130,6 +130,10 @@ const temas = [
         <p>One email, no spam, whenever we publish something worth reading. Tell us a little about yourself to help us understand our audience — only your name and email are required.</p>
       </div>
       <form class="newsletter-form" id="newsletter-form">
+        <div class="hp-field" aria-hidden="true">
+          <label for="sitio_web">Sitio web</label>
+          <input type="text" id="sitio_web" name="sitio_web" tabindex="-1" autocomplete="off" />
+        </div>
         <div class="form-row">
           <div class="form-field">
             <label for="nombre">Name *</label>
@@ -215,6 +219,16 @@ const temas = [
       e.preventDefault();
       const button = form.querySelector('button[type="submit"]');
       const data = new FormData(form);
+
+      // Honeypot anti-spam: este campo esta oculto para personas, pero los
+      // bots que autollenan formularios suelen rellenarlo igual.
+      if (data.get('sitio_web')) {
+        message.textContent = 'Thanks for subscribing!';
+        message.classList.add('success');
+        form.reset();
+        return;
+      }
+
       const payload = {
         nombre: data.get('nombre'),
         email: data.get('email'),
@@ -649,6 +663,15 @@ const temas = [
     gap: var(--space-4);
     margin-top: var(--space-4);
   }
+  .hp-field {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
   .consent-label {
     display: flex;
     align-items: flex-start;
